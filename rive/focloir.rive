@@ -1,0 +1,83 @@
+> object getColour javascript
+  return getColour();
+< object
+
+> object getName javascript
+  return getName();
+< object
+
+> object getRandomReply javascript
+  return getRandomReply();
+< object
+
+> object changeProgress javascript
+  return changeProgress(args[0]);
+< object
+
+> object getProgress javascript
+  return getProgress();
+< object
+
+> object getWrongCount javascript
+  return wrongCount;
+< object
+
+> object resetProgress javascript
+  return resetProgress();
+< object
+
+> object chatSetup javascript
+  if(args[1] == "nowait") return chatSetup(args[0]);
+  setTimeout(function(){
+    return chatSetup(args[0]);
+  }, 2500);
+  return "";
+< object
+
+> object checkAnswer javascript
+  if(args[0] == currentQuestion.answer){
+    return true;
+  }
+  else{
+    return false;
+  }
+< object
+
+> object answeringQuestions javascript
+  //console.log(answeringQuestions);
+  return answeringQuestions;
+< object
+
+> object setAnsweringQuestions javascript
+  answeringQuestions = args[0];
+  if(answeringQuestions == true){
+    wrongCount = 0;
+  }
+  console.log(answeringQuestions);
+  return "";
+< object
+
+> object loadFromChat javascript
+  loadFromChat(args[0], args[1]);
+  return "";
+< object
+
+> object levelComplete javascript
+  if(args[0] == "false") isLevelComplete = false;
+  if(isLevelComplete == true){
+    chatSetup("levelcomplete")
+  }
+  console.log("isLevelComplete: " + isLevelComplete);
+  return "";
+< object
+
+> object getCrioch javascript
+  return getCrioch();
+< object
+
+> object triailAris javascript
+  return triailAris();
+< object
+
++ start
+-

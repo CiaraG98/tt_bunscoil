@@ -1,0 +1,119 @@
+> object getRandom javascript
+  return getRandom(colours);
+< object
+
+> object getName javascript
+  return getName();
+< object
+
+> object getRandomReply javascript
+  return getRandomReply();
+< object
+
+> object changeProgress javascript
+  progress++;
+  return "";
+< object
+
+> object getProgress javascript
+  return getProgress();
+< object
+
+> object getWrongCount javascript
+  return wrongCount;
+< object
+
+> object resetProgress javascript
+  return resetProgress();
+< object
+
+> object chatSetup javascript
+  if(args[1] == "nowait") return chatSetup(args[0]);
+  setTimeout(function(){
+    return chatSetup(args[0]);
+  }, 2500);
+  return "";
+< object
+
+> object checkAnswer javascript
+  if(args[0] == currentQuestion.answer){
+    return true;
+  }
+  else{
+    return false;
+  }
+< object
+
+> object answeringQuestions javascript
+  return answeringQuestions;
+< object
+
+> object setAnsweringQuestions javascript
+  answeringQuestions = args[0];
+  if(answeringQuestions == true){
+    wrongCount = 0;
+  }
+  console.log(answeringQuestions);
+  return "";
+< object
+
+> object loadFromChat javascript
+  loadFromChat(args[0], args[1]);
+  return "";
+< object
+
+> object levelComplete javascript
+setTimeout(function(){
+  if(isLevelComplete == true){
+    return chatSetup("levelComplete");
+  }
+  else{
+    return chatSetup("random");
+  }
+}, 2500);
+return "";
+< object
+
+> object setLevelComplete javascript
+  if(args[0] == "false"){
+    isLevelComplete = false;
+  }
+  else{
+    isLevelComplete = true;
+  }
+  return "";
+< object
+
+> object getCrioch javascript
+  return getCrioch();
+< object
+
+> object triailAris javascript
+  return triailAris();
+< object
+
+
++ start
+- A <call>getName</call>. An bhfuil tú réidh le tosú?
+
++ (tá|sea|ba mhaith)
+- <call>chatSetup cleachtadh nowait</call>
+
++ (níl|níor mhaith)
+- Tá
+
++ cleachtadh
+- Ceart go leor, a <call>getName</call>. Cén dath atá air seo?<br>
+^ <call>setLevelComplete false</call><call>setAnsweringQuestions true</call><call>resetProgress</call><call>getRandom</call>
+
++ *
+* <call>answeringQuestions</call> == false =>  Tá brón orm cad a dúirt tú?
+* <call>checkAnswer <star></call> == true =><call>changeProgress</call><call>getRandomReply</call><call>getProgress</call><call>levelComplete</call>
+* <call>checkAnswer <star></call> == false => Mícheart. <call>triailAris</call><br><call>levelComplete</call>
+
++ random
+- Cén dath atá air seo?<br><call>getRandom</call>
+
++ levelcomplete
+- Tá na dathanna críochnaithe agat. Maith thú, a <call>getName</call>!\s
+^ <call>setAnsweringQuestions false</call>Tá do scór <call>getProgress notags</call>. 🎉🎉

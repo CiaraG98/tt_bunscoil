@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Taidhgín Bunscoil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d539734335.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  </head>
+  <body>
+  <div class="navbar"><p id="taighin" onclick="window.location = 'index.html'"><i>Taidghín</i></p></div>
+  <div class="container">
+    <div class="about">
+      <p class="Topaicí">Taidghín Topaicí</p>
+      <div class="topics">
+        <ul>
+          <li onclick="nextPage('dathanna')">Dathanna</li>
+          <li onclick="showWordsInput()">Vocabulary Test</li>
+          <li onclick="nextPage('Briathra')">Briathra Neamhrialta (Lite)</li>
+          <li onclick="nextPage('focloir')">Foclóir</li>
+        </ul>
+      </div>
+    </div>
+    <div class="inputVocab">
+      <i>Input Words...</i>
+      <span class="closeWords" onclick="closeWords()"><i class="far fa-window-close"></i></span>
+      <input id="word" class="word1" type="text" autocomplete="off" placeholder="Word 1">
+      <input id="word" class="word2" type="text" autocomplete="off" placeholder="Word 2">
+      <input id="word" class="word3" type="text" autocomplete="off" placeholder="Word 3">
+      <input id="word" class="word4" type="text" autocomplete="off" placeholder="Word 4">
+      <input id="word" class="word5" type="text" autocomplete="off" placeholder="Word 5">
+      <input id="word" class="word6" type="text" autocomplete="off" placeholder="Word 6">
+      <input id="word" class="word7" type="text" autocomplete="off" placeholder="Word 7">
+      <input id="word" class="word8" type="text" autocomplete="off" placeholder="Word 8">
+      <input id="word" class="word9" type="text" autocomplete="off" placeholder="Word 9">
+      <input id="word" class="word10" type="text" autocomplete="off" placeholder="Word 10">
+      <span class="warning">Please input 10 words</span>
+      <button id="vocabNext" type="submit" onclick="enterWords()">Next</button>
+    </div>
+  </div>
+  <div class="vocabOuter"></div>
+  <script src="js/bunscoil.js"></script>
+  <script src="js/Rivescript.js"></script>
+  </body>
+</html>
