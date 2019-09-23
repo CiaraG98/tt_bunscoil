@@ -52,7 +52,7 @@ function loadGardenData(data, tabletop){
   for(i = 0; i < data.length; i++){
     gairdin[i] = data[i];
   }
-  console.log(gairdin);
+  //console.log(gairdin);
 }
 
 function loadBaileData(data, tabletop){

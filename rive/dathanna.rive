@@ -16,6 +16,9 @@
 < object
 
 > object getProgress javascript
+  if(args[0] == "notags"){
+    return progress;
+  }
   return getProgress();
 < object
 
@@ -65,7 +68,7 @@
 > object levelComplete javascript
 setTimeout(function(){
   if(isLevelComplete == true){
-    return chatSetup("levelComplete");
+    return chatSetup("levelComplete", false, true);
   }
   else{
     return chatSetup("random");
@@ -91,7 +94,6 @@ return "";
 > object triailAris javascript
   return triailAris();
 < object
-
 
 + start
 - A <call>getName</call>. An bhfuil tú réidh le tosú?

@@ -10,6 +10,7 @@ var bot;
 var inputNameAndDialect;
 var thisFile;
 var request = new XMLHttpRequest();
+var currentTopic;
 
 var vocabInput;
 var vocabOuter;
@@ -64,8 +65,6 @@ function closeWords(){
 }
 
 function setup(){
-  //window.location.href = "taighin_bot.html";
-  //load("dathanna");
   var vid = document.getElementById("monkey-vid");
   var input = document.querySelector(".user_input");
   var userMessage = document.getElementById("user-message");
@@ -132,6 +131,7 @@ function loadBot(){
 
 //loads file chosen by the user
 function load(fileId, start){
+  if(fileId) currentTopic = fileId;
   console.log("To Load: " + fileId);
   for(i = 0; i < files.length; i++){
     if(fileId == files[i].id){
@@ -153,29 +153,37 @@ function loadFromChat(fileId, start){
   load(fileId, start);
 }
 
-function chatSetup(input, holdMessage){
+function chatSetup(input, holdMessage, sendLog){
   var output = document.getElementById("output");
   if(holdMessage == "true" || holdMessage == true){
     audioPlayer.addEventListener("ended", function(){
+      console.log(holdMessage)
       bot.reply("local-user", input).then((reply) => {
-        //console.log(reply);
-        $("#output").delay(200).fadeOut("fast", function(){
-          output.innerHTML = reply;
-          audio(reply);
-          $("#output").delay(500).fadeIn("fast");
-        });
+        setTimeout(function(){
+          $("#output").delay(200).fadeOut("fast", function(){
+            output.innerHTML = reply;
+            makeMessageObj(false, bubbleText);
+            audio(reply);
+            $("#output").delay(500).fadeIn("fast");
+          });
+          console.log(sendLog);
+          if(sendLog == true || sendLog == "true") sendLogToDb();
+        }, 1800);
       });
     });
   }
   else{
     var output = document.getElementById("output");
     bot.reply("local-user", input).then((reply) => {
-      //console.log(reply);
-      $("#output").delay(200).fadeOut("fast", function(){
-        output.innerHTML = reply;
-        audio(reply);
-        $("#output").delay(500).fadeIn("fast");
-      });
+      setTimeout(function(){
+        $("#output").delay(200).fadeOut("fast", function(){
+          output.innerHTML = reply;
+          makeMessageObj(false, bubbleText);
+          audio(reply);
+          $("#output").delay(500).fadeIn("fast");
+        });
+        if(sendLog == true || sendLog == "true") sendLogToDb();
+      }, 1800);
     });
   }
   return "";
@@ -191,13 +199,14 @@ function chat(){
   var newOutput = "";
   var output = document.getElementById("output");
   if(input.value != ""){
+    makeMessageObj(true, input.value);
     userMessage.innerHTML = input.value;
     userInput = input.value;
     input.value = "";
     bot.reply("local-user", userInput).then((reply) => {
-      //console.log(reply);
       $("#output").delay(200).fadeOut("fast", function(){
         output.innerHTML = reply;
+        makeMessageObj(false, bubbleText);
         audio(reply);
         $("#output").delay(500).fadeIn("fast");
         $("#bot-message").animate({ scrollTop: $("#bot-message")[0].scrollHeight }, 200);

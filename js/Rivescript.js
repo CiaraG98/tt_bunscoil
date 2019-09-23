@@ -155,9 +155,10 @@ var spellingWordsUsed = [];
 var currentWord = "";
 
 function getRandom(array){
+  var ran;
   if(isLevelComplete == false){
     if(array != spellingWords){
-      var ran = getRandomIntInclusive(0, array.length - 1);
+      ran = getRandomIntInclusive(0, array.length - 1);
       if(prevColor == ran){
         ran = getRandomIntInclusive(0, array.length - 1);
       }
@@ -168,10 +169,12 @@ function getRandom(array){
       return currentQuestion.question;
     }
     else if(array == spellingWords){
-      spellingWordsUsed.push(spellingWords[0]);
-      currentWord = spellingWords[0];
-      var wordToReturn = "<p style=\"display:none\">" + spellingWords[0] + "</p>";
-      spellingWords.splice(0, 1);
+      ran = getRandomIntInclusive(0, array.length - 1);
+      spellingWordsUsed.push(spellingWords[ran]);
+      currentWord = spellingWords[ran];
+      console.log(currentWord);
+      var wordToReturn = "<p style=\"display:none\">" + spellingWords[ran] + "</p>";
+      spellingWords.splice(ran, 1);
       if(spellingWords.length == 0){
         isLevelComplete = true;
       }

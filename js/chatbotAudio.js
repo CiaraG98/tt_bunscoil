@@ -24,7 +24,9 @@ function audio(newReply, id, isUser){
     for(i = 0; i < inp.length; i++){
       if(inp[i].indexOf("img") == -1) bubbleText = bubbleText.concat(inp[i], ".");
     }
-    if(bubbleText != "") testCallAudio(bubbleText);
+    if(bubbleText != ""){
+      testCallAudio(bubbleText);
+    }
   }
 }
 

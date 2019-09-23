@@ -2,6 +2,13 @@
  return getRandom(spellingWords);
 < object
 
+> object resetRandom javascript
+  progress = 0;
+  spellingWords = spellingWordsUsed;
+  spellingWordsUsed = [];
+  return "";
+< object
+
 > object getName javascript
  return getName();
 < object
@@ -23,11 +30,11 @@
 < object
 
 > object chatSetup javascript
- if(args[1] == "nowait") return chatSetup(args[0]);
- setTimeout(function(){
-   return chatSetup(args[0]);
- }, 2500);
- return "";
+   if(args[1] == "nowait") return chatSetup(args[0]);
+   setTimeout(function(){
+     return chatSetup(args[0]);
+   }, 2500);
+   return "";
 < object
 
 > object checkAnswer javascript
@@ -85,6 +92,7 @@
   return getWords();
 < object
 
+
 + start
 - Dia Dhuit, a <call>getName</call>.<call>getWords</call>\s
 ^ An bhfuil tú réidh le haghaidh do scrúdú foclóra?
@@ -103,3 +111,15 @@
 + levelcomplete
 - Tá an thástáil litrithe críochnaithe agat. Maith thú, a <call>getName</call>!\s
 ^ Tá <call>getProgress notags</call> bhfocal ceart agat! <call>setAnsweringQuestions false</call>
+^ <call>chatSetup again true</call>
+
++ again
+- Ar mhaith leat an scrúdú a dhéanamh arís?
+
++ (tá|sea|ba mhaith)
+% ar mhaith leat an scrúdú a dhéanamh arís
+- Iontach! 😄😄<call>resetRandom</call><call>setLevelComplete false</call><call>setAnsweringQuestions true</call><call>chatSetup random true</call>
+
++ (níl|níor mhaith)
+% ar mhaith leat an scrúdú a dhéanamh arís
+- Ceart go leor, a <call>getName</call>. Slán!

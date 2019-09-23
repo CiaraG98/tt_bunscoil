@@ -496,6 +496,46 @@ li{
   display: none;
 }
 
+.aboutContent{
+  position: absolute;
+  width: 50%;
+  top: 100px;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: cursive;
+  font-size: 20px;
+  text-align: center;
+  background: #F9E79F;
+  height: 300px;
+}
+
+.aboutContentInner{
+  position: relative;
+  top: 40px;
+}
+
+#aboutMonkey, #aboutPencil, .aboutSMS, #aboutKids{
+  position: absolute;
+  height: 30%;
+  width: 16%;
+  top: 20px;
+}
+
+#aboutMonkey{
+  left: 30px;
+}
+
+#aboutPencil{
+  right: 30px;
+}
+
+.aboutSMS{
+  left: 30px;
+  top: 230px;
+  font-size: 950%;
+  color: #D7BDE2;
+}
+
 .toTopics{
   border: none;
   border-radius: 5px;
